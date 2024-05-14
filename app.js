@@ -8,9 +8,28 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 
-//Extract data
+//Import routes
+const loginRoute = require('./routes/loginRoute.js')
+const appoimentRoute = require('./routes/appointment.js')
+
+//Extract data from requests
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
+
+//Routes middleware
+const authToken = require('./middlewares/authToken.js')
+
+//Routes
+app.use('/api/v1/auth', loginRoute)
+app.use('/api/v1/appoiments', authToken ,appoimentRoute)
+
+//Middlewares import
+const errorHandler = require('./middlewares/errorHandler.js')
+const notFound = require('./middlewares/notFound.js')
+
+//Middlewares
+app.use(errorHandler)
+app.use(notFound)
 
 //Start setup
 const port = process.env.PORT || 3000;
