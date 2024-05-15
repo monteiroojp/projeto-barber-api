@@ -41,7 +41,7 @@ const appoimentSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        default: 'appoimentDuration is provided in minutes'
+        default: 'appoimentDuration is provided in minutes and the price in R$'
     }
 }, {timestamps: true})
 
