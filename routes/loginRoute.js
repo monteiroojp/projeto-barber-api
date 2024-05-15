@@ -3,11 +3,11 @@ const express = require('express')
 const router = express.Router()
 
 //Controllers import
-const {signUpBarber, loginBarber} = require('../controllers/loginController')
+const {signUpUser, loginUser} = require('../controllers/loginController')
 
 //Routes
-router.route('/signUp').post(signUpBarber)
-router.route('/login').post(loginBarber)
+router.route('/signUp').post(signUpUser)
+router.route('/login').post(loginUser)
 
 //Export
 module.exports = router

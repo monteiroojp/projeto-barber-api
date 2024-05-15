@@ -8,23 +8,25 @@ const appoimentSchema = new mongoose.Schema({
         ref: 'user',
         required: [true, 'Must provide a userID']
     },
-    services: {
-        type: String,
+    services: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'service',
         required: [true, 'Must provide the services chosen by the client']
-    },
+    }],
     scheduledTime:{
         type: String,
         required: [true, 'Must provide the appoiments time']
     },
     choosenBarber: {
-        type: String,
-        required: [true, 'Must provide a chosen barber']
+        type: mongoose.Types.ObjectId,
+        ref: 'barber',
+        required: [true, 'Must provide a barber']
     },
     status: {
         type: String,
         enum: {
             values: ['Created', 'Canceled', 'Done'],
-            message: 'The status provided do not match the current options'
+            message: 'The status provided does not match the current options'
         },
         required: [true, 'Must provide a status'],
         default: 'Created'
@@ -36,6 +38,10 @@ const appoimentSchema = new mongoose.Schema({
     totalPrice: {
         type: Number,
         required: [true, 'Must provide the total price of the service']
+    },
+    description: {
+        type: String,
+        default: 'appoimentDuration is provided in minutes'
     }
 }, {timestamps: true})
 

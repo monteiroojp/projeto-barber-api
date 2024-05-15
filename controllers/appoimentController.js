@@ -4,7 +4,6 @@ const {CustomError, BadRequest, NotFound, Unauthorized} = require('../errors/ind
 
 //Import model
 const Appoiment = require('../models/appoimentSchema.js')
-const notFound = require('../middlewares/notFound.js')
 
 //Controllers
 const getAllAppointments = async (req, res) => {

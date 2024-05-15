@@ -13,6 +13,11 @@ const errorHandler = (error, req, res, next) => {
         customError.msg = `Duplicated values in ${Object.keys(error.keyValue)} fild/filds`
     }
 
+    else if(error.name == "CastError"){
+        customError.statusCode = 400
+        customError.msg = `The sintax of the value ${error.path} is incorrect`
+    }
+
     return res.status(customError.statusCode).send(customError.msg)
 }
 

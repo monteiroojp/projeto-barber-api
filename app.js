@@ -10,7 +10,9 @@ const app = express()
 
 //Import routes
 const loginRoute = require('./routes/loginRoute.js')
-const appoimentRoute = require('./routes/appointment.js')
+const appoimentRoute = require('./routes/appointmentRoute.js')
+const barberRoute = require('./routes/barberRoute.js')
+const serviceRoute = require('./routes/servicesRoute.js')
 
 //Extract data from requests
 app.use(express.json())
@@ -21,7 +23,9 @@ const authToken = require('./middlewares/authToken.js')
 
 //Routes
 app.use('/api/v1/auth', loginRoute)
-app.use('/api/v1/appoiments', authToken ,appoimentRoute)
+app.use('/api/v1/appoiments', authToken,appoimentRoute)
+app.use('/api/v1/barbers', authToken, barberRoute)
+app.use('/api/v1/services', authToken, serviceRoute)
 
 //Middlewares import
 const errorHandler = require('./middlewares/errorHandler.js')

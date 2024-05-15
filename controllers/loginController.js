@@ -6,14 +6,14 @@ const {CustomError, BadRequest, NotFound, Unauthorized} = require('../errors/ind
 const User = require('../models/userSchema.js')
 
 //Controllers
-const signUpBarber = async (req, res) => {
+const signUpUser = async (req, res) => {
     const user = await User.create(req.body)
     const token = await user.createToken()
     res.status(StatusCodes.CREATED).json({token})
 }
 
 
-const loginBarber = async (req, res) => {
+const loginUser = async (req, res) => {
     const {email, password} = req.body
     const user = await User.findOne({email: email})
 
@@ -33,6 +33,6 @@ const loginBarber = async (req, res) => {
 
 //Export
 module.exports = {
-    loginBarber,
-    signUpBarber,
+    loginUser,
+    signUpUser,
 }
