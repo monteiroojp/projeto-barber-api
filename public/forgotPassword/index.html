@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento de Compromisso</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Agendar Compromisso</h1>
+        <form id="appointmentForm">
+            <div class="form-group">
+                <label for="date">Escolha o Dia:</label>
+                <input type="date" class="form-control" id="date" required>
+            </div>
+            <div class="form-group">
+                <label for="time">Escolha o Horário:</label>
+                <input type="time" class="form-control" id="time" required>
+            </div>
+            <div class="form-group">
+                <label for="service">Escolha o Serviço:</label>
+                <select class="form-control" id="service" required>
+                    <option value="" disabled selected>Selecione um serviço</option>
+                    <option value="corte">Corte</option>
+                    <option value="barba">Barba</option>
+                    <option value="combo">Combo (Corte e Barba)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="barber">Escolha o Barbeiro:</label>
+                <select class="form-control" id="barber" required>
+                    <option value="" disabled selected>Selecione um barbeiro</option>
+                    <option value="joao">João</option>
+                    <option value="mario">Mário</option>
+                    <option value="carlos">Carlos</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Agendar</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('appointmentForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const service = document.getElementById('service').value;
+            const barber = document.getElementById('barber').value;
+
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('Você precisa estar logado para agendar um compromisso.');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const appointment = {
+                date,
+                time,
+                service,
+                barber
+            };
+
+            try {
+                const response = await fetch('http://localhost:5000/api/v1/appoiments', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(appointment)
+                });
+
+                if (response.ok) {
+                    alert('Agendamento realizado com sucesso!');
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Falha ao realizar o agendamento. Tente novamente.');
+                }
+            } catch (error) {
+                console.error('Erro ao realizar o agendamento:', error);
+                alert('Erro ao realizar o agendamento. Tente novamente.');
+            }
+        });
+    </script>
+</body>
+</html>

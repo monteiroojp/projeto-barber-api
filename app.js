@@ -7,11 +7,6 @@ require('dotenv').config()
 //App
 const express = require('express')
 const app = express()
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*"); // Permitir solicitações de todas as origens
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
 
 //Import routes
 const loginRoute = require('./routes/loginRoute.js')
@@ -25,6 +20,14 @@ app.use(express.urlencoded({extended: false}))
 
 //Routes middleware
 const authToken = require('./middlewares/authToken.js')
+
+//Publics
+app.use('/login', express.static('./public/login/'))
+app.use('/', express.static('./public/home/'))
+app.use('/signUp', express.static('./public/signUp'))
+
+//Extra securites
+const cors = require('cors')
 
 //Routes
 app.use('/api/v1/auth', loginRoute)
@@ -40,6 +43,8 @@ const notFound = require('./middlewares/notFound.js')
 app.use(errorHandler)
 app.use(notFound)
 
+//Security models
+app.use(cors)
 
 //Start setup
 const port = process.env.PORT || 3000;
