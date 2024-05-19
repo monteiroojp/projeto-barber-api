@@ -25,6 +25,7 @@ const authToken = require('./middlewares/authToken.js')
 app.use('/login', express.static('./public/login/'))
 app.use('/', express.static('./public/home/'))
 app.use('/signUp', express.static('./public/signUp'))
+app.use('/forgotPassword', express.static('./public/forgotPassword'))
 
 //Extra securites
 const cors = require('cors')

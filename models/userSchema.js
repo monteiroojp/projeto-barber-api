@@ -30,6 +30,15 @@ userSchema.pre('save', async function() {
     this.password = await bcryptjs.hash(this.password, salt)
 })
 
+userSchema.pre('findOneAndUpdate', async function(next) {
+    const update = this.getUpdate();
+    if (update.password) {
+        const salt = await bcryptjs.genSalt(10);
+        update.password = await bcryptjs.hash(update.password, salt);
+    }
+    next();
+});
+
 //Schema methods
 userSchema.methods.createToken = async function () {
     return jwt.sign({userID: this._id, username: this.name}, process.env.JWT_SECRET, {expiresIn: '90d'})

@@ -24,8 +24,8 @@
             color: white;
             padding: 20px 0;
         }
-        #banner{
-          background-image: url('pexels-nickoloui-1319459.jpg');
+        #banner {
+            background-image: url('pexels-nickoloui-1319459.jpg');
         }
     </style>
 </head>
@@ -40,7 +40,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto" id="navBar">
                     <li class="nav-item">
                         <a class="nav-link" href="#services">Serviços</a>
                     </li>
@@ -60,7 +60,7 @@
         <div>
             <h1 class="display-4">Bem-vindo à Barbearia Elegante</h1>
             <p class="lead">Onde seu estilo encontra a elegância</p>
-            <a href="#agendamento" class="btn btn-primary btn-lg mt-4" id="bannerButton">Agende agora</a>
+            <button class="btn btn-primary btn-lg mt-4" id="bannerButton">Agende agora</button>
         </div>
     </section>
 
@@ -77,21 +77,63 @@
                             <th>Duração</th>
                         </tr>
                     </thead>
-                    <tbody id="servicesBody">
-                        <!-- Conteúdo será preenchido pelo script fetchData.js -->
-                    </tbody>
+                    <tbody id="servicesBody"></tbody>
                 </table>
             </div>
         </div>
     </section>
+
+    <!-- Appointment Modal -->
+    <div class="modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="appointmentModalLabel">Agendar Atendimento</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="appointmentForm">
+                        <div class="form-group">
+                            <label for="appointmentDate">Data</label>
+                            <input type="date" class="form-control" id="appointmentDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="appointmentTime">Hora</label>
+                            <input type="time" class="form-control" id="appointmentTime" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="appointmentService">Serviço</label>
+                            <select class="form-control" id="appointmentService" required>
+                                <!-- Opções de serviço dinâmicas -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="appointmentBarber">Barbeiro</label>
+                            <select class="form-control" id="appointmentBarber" required>
+                                <!-- Opções de barbeiro dinâmicas -->
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Agendar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="container-fluid d-flex justify-content-center align-items-center">
         <p>&copy; 2024 Barbearia Elegante. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Adiciona o script aqui -->
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="authUser.js" defer></script>
     <script src="createTable.js" defer></script>
+    <script src="loggedNavBar.js" defer></script>
+    <script src="createAppoiment.js" defer></script>
 </body>
 </html>

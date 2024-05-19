@@ -1,5 +1,6 @@
 //Import util modules
 const mongoose = require('mongoose')
+const Service = require('../models/serviceSchema')
 
 //Schema
 const appoimentSchema = new mongoose.Schema({
@@ -35,6 +36,10 @@ const appoimentSchema = new mongoose.Schema({
         type: Number,
         required: [true, 'Must provied the appoiments duration']
     },
+    date: {
+        type: String,
+        required: [true, 'Must provide a date']
+    },
     totalPrice: {
         type: Number,
         required: [true, 'Must provide the total price of the service']
@@ -44,6 +49,9 @@ const appoimentSchema = new mongoose.Schema({
         default: 'appoimentDuration is provided in minutes and the price in R$'
     }
 }, {timestamps: true})
+
+//Schema pre functions
+
 
 //Export
 module.exports = mongoose.model('appoiment', appoimentSchema)

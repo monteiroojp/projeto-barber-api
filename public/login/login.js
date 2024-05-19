@@ -40,12 +40,12 @@ const loginAccount =  async () => {
             email: loginUsernameInput.value,
             password: loginPasswordInput.value,
         }
-        console.log(account)
         const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'
             },
+            body: JSON.stringify(account)
         })        
 
         if(response.ok){

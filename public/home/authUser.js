@@ -1,25 +1,22 @@
-//Variáveis
-const bannerButton = document.getElementById('bannerButton')
+document.addEventListener('DOMContentLoaded', () => {
+    const bannerButton = document.getElementById('bannerButton');
+    const appointmentModalElement = document.getElementById('appointmentModal');
+    const appointmentModal = new bootstrap.Modal(appointmentModalElement);
 
-//Funções
-const authUser = () => {
-    const token = localStorage.getItem('jwtToken');
+    // Funções
+    const authUser = () => {
+        const token = localStorage.getItem('jwtToken');
+        if (token) {
+            // Token JWT está presente, abrir o modal de agendamento
+            appointmentModal.show();
+        } else {
+            // Token JWT não está presente, redirecionar para a página de login
+            window.location.href = './login';
+        }
+    };
 
-    if (token) {
-        // Token JWT está presente, redirecionar para a página de agendamento
-        window.location.href = 'signUp.html'; // Substitua '/agendamento' pela URL da página de agendamento
-        window.alert('a')
-    } else {
-        // Token JWT não está presente, redirecionar para a página de login
-        window.location.href = './login'; // Substitua '/login' pela URL da página de login
-    }
-}
-
-
-
-
-
-//Eventos
-bannerButton.addEventListener('click', () => {
-    authUser()
-})
+    // Eventos
+    bannerButton.addEventListener('click', () => {
+        authUser();
+    });
+});

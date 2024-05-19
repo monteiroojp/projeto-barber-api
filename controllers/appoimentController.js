@@ -35,6 +35,7 @@ const getAllAppointments = async (req, res) => {
 
 const createAppoiment = async (req, res) => {
     req.body.createdBy = req.user._id
+    console.log(req.body)
     const appoiment = await Appoiment.create(req.body)
     res.status(StatusCodes.CREATED).json({appoiment})
 }
