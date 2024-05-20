@@ -1,4 +1,7 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
+    const closeButton = document.querySelector('button.close')
     const appointmentForm = document.getElementById('appointmentForm');
     const appointmentService = document.getElementById('appointmentService');
     const appointmentBarber = document.getElementById('appointmentBarber');
@@ -40,13 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const appointmentData = {
             date: document.getElementById('appointmentDate').value,
-            scheduledTime: [document.getElementById('appointmentTime').value],
+            scheduledTime: document.getElementById('appointmentTime').value,
             services: document.getElementById('appointmentService').value,
             choosenBarber: document.getElementById('appointmentBarber').value,
         };
 
         try {
-            const response = await fetch('http://localhost:5000/api/v1/appointments', {
+            const response = await fetch('http://localhost:5000/api/v1/appoiments', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -61,8 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const result = await response.json();
+            console.log(result)
             alert('Appointment created successfully!');
-            appointmentModal.hide();
         } catch (error) {
             console.error('Error creating appointment:', error);
             alert('Failed to create appointment');

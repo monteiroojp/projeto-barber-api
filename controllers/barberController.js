@@ -16,6 +16,17 @@ const createBarber = async (req, res) => {
     res.status(StatusCodes.CREATED).json({barber})
 }
 
+const getBarber = async (req, res) => {
+    const barberID = req.params.id
+    const barber = await Barber.findOne({_id: barberID})
+
+    if(!barber){
+        throw new NotFound('There is no user with this ID or the appoiment does not belong to this user')
+    }
+
+    res.status(StatusCodes.OK).json({barber})
+}
+
 const updateBarber = async (req, res) => {
     const barberID = req.params.id
     const barber = await Barber.findOneAndUpdate({_id: barberID}, req.body, {
@@ -44,6 +55,7 @@ const deleteBarber = async (req, res) => {
 //Export
 module.exports = {
     getAllBarbers,
+    getBarber,
     createBarber,
     updateBarber,
     deleteBarber,

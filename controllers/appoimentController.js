@@ -2,12 +2,13 @@
 const { StatusCodes } = require('http-status-codes')
 const {CustomError, BadRequest, NotFound, Unauthorized} = require('../errors/index')
 
-//Import model
+//Import models
 const Appoiment = require('../models/appoimentSchema.js')
+const Service = require('../models/serviceSchema')
 
 //Controllers
 const getAllAppointments = async (req, res) => {
-    const {choosenBarber, sort, status} = req.query
+    const {choosenBarber, sort, status, createdBy} = req.query
     let queryObject = {}
 
     if(choosenBarber){
@@ -15,6 +16,10 @@ const getAllAppointments = async (req, res) => {
     }
     else if(status){
         queryObject.status = status
+    }
+
+    else if(createdBy){
+        queryObject.createdBy = req.user._id
     }
     
     let result = Appoiment.find(queryObject)
@@ -35,7 +40,12 @@ const getAllAppointments = async (req, res) => {
 
 const createAppoiment = async (req, res) => {
     req.body.createdBy = req.user._id
-    console.log(req.body)
+    //Extract service infos
+    const service = await Service.findOne({_id: req.body.services})
+    req.body.appoimentDuration = service.duration
+    req.body.totalPrice = service.price
+
+    //Create appoiment
     const appoiment = await Appoiment.create(req.body)
     res.status(StatusCodes.CREATED).json({appoiment})
 }

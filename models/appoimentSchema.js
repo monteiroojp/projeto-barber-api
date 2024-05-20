@@ -9,11 +9,11 @@ const appoimentSchema = new mongoose.Schema({
         ref: 'user',
         required: [true, 'Must provide a userID']
     },
-    services: [{
+    services: {
         type: mongoose.Types.ObjectId,
         ref: 'service',
         required: [true, 'Must provide the services chosen by the client']
-    }],
+    },
     scheduledTime:{
         type: String,
         required: [true, 'Must provide the appoiments time']
@@ -50,7 +50,7 @@ const appoimentSchema = new mongoose.Schema({
     }
 }, {timestamps: true})
 
-//Schema pre functions
+//Schema methods
 
 
 //Export

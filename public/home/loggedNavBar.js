@@ -11,7 +11,7 @@ const isLogged = () => {
         <a class="nav-link" href="#services">Serviços</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#agendamentos">Meus agendamentos</a>
+            <a class="nav-link" href="./myAppoiments">Meus agendamentos</a>
         </li>       
         `
     }

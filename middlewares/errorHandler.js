@@ -3,6 +3,7 @@ const {StatusCodes} = require('http-status-codes')
 
 //Error handler function
 const errorHandler = (error, req, res, next) => {
+    console.log('a')
     let customError = {
         statusCode: error.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
         msg: error.message || `Something went wrong, try again later`
@@ -17,6 +18,8 @@ const errorHandler = (error, req, res, next) => {
         customError.statusCode = 400
         customError.msg = `The sintax of the value ${error.path} is incorrect`
     }
+
+    console.log(error)
 
     return res.status(customError.statusCode).send(customError.msg)
 }

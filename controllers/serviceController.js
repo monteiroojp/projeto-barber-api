@@ -7,8 +7,19 @@ const Service = require('../models/serviceSchema')
 
 //Controllers
 const getAllServices = async (req, res) => {
-    const service = await Service.find({})
+    const service = await Service.find(req.body)
     res.status(StatusCodes.OK).json({allservices: service, totalservices: service.length})
+}
+
+const getService = async (req, res) => {
+    const serviceID = req.params.id
+    const service = await Service.findOne({_id: serviceID})
+
+    if(!Service){
+        throw new NotFound('There is no user with this ID or the appoiment does not belong to this user')
+    }
+
+    res.status(StatusCodes.OK).json({service})
 }
 
 const createService = async (req, res) => {
@@ -44,6 +55,7 @@ const deleteService = async (req, res) => {
 //Export
 module.exports = {
     getAllServices,
+    getService,
     createService,
     updateService,
     deleteService
