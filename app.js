@@ -27,6 +27,7 @@ app.use('/', express.static('./public/home/'))
 app.use('/signUp', express.static('./public/signUp'))
 app.use('/forgotPassword', express.static('./public/forgotPassword'))
 app.use('/myAppoiments', express.static('./public/myAppoiments'))
+app.use('/dashboard', express.static('./public/dashboard'))
 
 //Extra securites
 const cors = require('cors')

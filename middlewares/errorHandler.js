@@ -19,9 +19,7 @@ const errorHandler = (error, req, res, next) => {
         customError.msg = `The sintax of the value ${error.path} is incorrect`
     }
 
-    console.log(error)
-
-    return res.status(customError.statusCode).send(customError.msg)
+    return res.status(customError.statusCode).json(customError.msg)
 }
 
 //Export

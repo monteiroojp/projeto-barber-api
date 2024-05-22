@@ -7,6 +7,9 @@ const User = require('../models/userSchema.js')
 
 //Controllers
 const signUpUser = async (req, res) => {
+    if(req.body.adminToken === process.env.ADMIN_TOKEN){
+        req.body.isAdmin = true
+    }
     const user = await User.create(req.body)
     const token = await user.createToken()
     res.status(StatusCodes.CREATED).json({token})

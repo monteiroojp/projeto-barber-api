@@ -1,0 +1,1 @@
+ const adminToken = process.env.ADMIN_TOKEN

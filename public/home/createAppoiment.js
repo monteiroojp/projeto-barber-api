@@ -60,12 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(response)
 
             if (!response.ok) {
-                throw new Error('Failed to create appointment');
+                throw new Error('Houve algum erro ao tentar criar o agendamento');
             }
 
             const result = await response.json();
             console.log(result)
-            alert('Appointment created successfully!');
+            alert('Horário agendado com sucesso!');
         } catch (error) {
             console.error('Error creating appointment:', error);
             alert('Failed to create appointment');

@@ -21,6 +21,11 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, 'Must provide a password']
+    },
+    isAdmin: {
+        type: Boolean,
+        required: [true, 'Must say if is admin or not'],
+        default: false
     }
 }, {timestamps: true})
 
@@ -41,7 +46,7 @@ userSchema.pre('findOneAndUpdate', async function(next) {
 
 //Schema methods
 userSchema.methods.createToken = async function () {
-    return jwt.sign({userID: this._id, username: this.name}, process.env.JWT_SECRET, {expiresIn: '90d'})
+    return jwt.sign({userID: this._id, username: this.name, isAdmin: this.isAdmin}, process.env.JWT_SECRET, {expiresIn: '90d'})
 }
 
 userSchema.methods.verifyPassword = async function (passwordToVerify) {

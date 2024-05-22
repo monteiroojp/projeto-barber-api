@@ -79,7 +79,6 @@ const deleteAppoiment = async (req, res) => {
     const appoimentId = req.params.id
     const appoiment = await Appoiment.findOneAndDelete({_id: appoimentId, createdBy: req.user._id})
 
-    console.log(appoiment)
 
     if(!appoiment){
         throw new NotFound('There is no user with this ID or the appoiment does not belong to this user')
