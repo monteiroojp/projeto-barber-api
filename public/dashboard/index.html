@@ -185,25 +185,25 @@
     <section id="appointments" class="container my-5">
         <h2>Agendamentos</h2>
         <!-- Select para selecionar o barbeiro -->
-    <label for="barberSelect">Selecione o Barbeiro:</label>
     <select id="barberSelect">
-        <option value="barber1">Barbeiro 1</option>
-        <option value="barber2">Barbeiro 2</option>
+        <option value="#">Qualquer</option>
+        <!-- Adicione opções para cada barbeiro disponível -->
+    </select>
+
+    <select id="serviceSelect">
+        <option value="#">Qualquer</option>
         <!-- Adicione opções para cada barbeiro disponível -->
     </select>
 
     <!-- Select para selecionar o método de classificação -->
-    <label for="sortSelect">Selecione o Método de Classificação:</label>
     <select id="sortSelect">
         <option value="date">Data</option>
-        <option value="service">Serviço</option>
-        <option value="barber">Barbeiro</option>
+        <option value="totalPrice">Preço</option>
+        <option value="duration">Duração</option>
         <!-- Adicione opções para outros métodos de classificação, se necessário -->
     </select>
 
-    <!-- Input de texto para inserir o nome do serviço -->
-    <label for="serviceInput">Nome do Serviço:</label>
-    <input type="text" id="serviceInput" placeholder="Digite o nome do serviço">
+
 
     <!-- Botão para acionar a pesquisa -->
     <button id="searchButton" class="btn btn-primary">Pesquisar</button>
@@ -240,7 +240,7 @@
     <!-- Custom JS -->
     <script src="dashboard.js"></script>
     <script src="addAdmin.js" defer></script>
-    <script src="getAppoiments.js" defer></script>
+    <script src="getAppoiments.js" defer type="module"></script>
     <script src="barbers.js" defer></script>
     <script src="services.js" defer></script>
 </body>

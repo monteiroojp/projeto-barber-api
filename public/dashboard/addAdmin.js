@@ -1,6 +1,5 @@
 //Variáveis
-const addAdminForm = document.getElementById('addAdminForm');
-
+const addAdminForm = document.getElementById('addAdminForm')
 
 //Funções
 const addAdmin = async (user) => {

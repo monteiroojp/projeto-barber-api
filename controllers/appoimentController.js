@@ -8,14 +8,14 @@ const Service = require('../models/serviceSchema')
 
 //Controllers
 const getAllAppointments = async (req, res) => {
-    const {choosenBarber, sort, status, createdBy} = req.query
+    const {choosenBarber, sort, serviceQuery, createdBy} = req.query
     let queryObject = {}
 
-    if(choosenBarber){
-        queryObject.choosenBarber = {$regex: choosenBarber, $options: 'i'}
+    if(serviceQuery){
+        queryObject.services = serviceQuery
     }
-    else if(status){
-        queryObject.status = status
+    else if(choosenBarber){
+        queryObject.choosenBarber = choosenBarber
     }
 
     else if(createdBy){

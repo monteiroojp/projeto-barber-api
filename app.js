@@ -29,8 +29,11 @@ app.use('/forgotPassword', express.static('./public/forgotPassword'))
 app.use('/myAppoiments', express.static('./public/myAppoiments'))
 app.use('/dashboard', express.static('./public/dashboard'))
 
-//Extra securites
+//Extra securites import
+const helmet = require('helmet')
 const cors = require('cors')
+const xss = require('xss-clean')
+const rateLimiter = require('express-rate-limit')
 
 //Routes
 app.use('/api/v1/auth', loginRoute)
@@ -46,8 +49,15 @@ const notFound = require('./middlewares/notFound.js')
 app.use(errorHandler)
 app.use(notFound)
 
-//Security models
-app.use(cors)
+//Security 
+app.set('trust proxy', 1)
+app.use(helmet())
+app.use(cors())
+app.use(xss())
+app.use(rateLimiter({
+  windowMs: 15 * 60 * 1000,
+  max: 100
+}))
 
 //Start setup
 const port = process.env.PORT || 3000;

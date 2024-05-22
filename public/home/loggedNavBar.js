@@ -11,7 +11,10 @@ const isLogged = () => {
         </li>
         <li class="nav-item">
             <a class="nav-link" href="./myAppoiments">Meus agendamentos</a>
-        </li>       
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#" id="logoutButton">Logout</a>
+        </li>             
         `
     }
 
