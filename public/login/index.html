@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Css-->
+    <link rel="stylesheet" href="./css/login/login.css">
+    <!--Fonts-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Login Page</title>
+</head>
+<body>
+    <header>
+        <img src="barberIcon.png" alt="Img">
+    </header>
+    <main>
+        <section class="container">
+            <div class="login-image">
+                <img src="barberIcon.png" alt="Img">
+            </div>
+            <div class="formContainer" id="loginContainer">
+                <h2>Despesas</h2>
+                <form action="#" method="post" id="login-form">
+                    <div class="usernameInputContainer">   
+                        <i class="fa-solid fa-user" id="userSymbol"></i>         
+                        <input type="email" name="loginUsernameInput" id="loginUsernameInput" placeholder="Email" required autocomplete="username">
+                    </div>
+                    <div class="passwordInputContainer">
+                        <i class="fa-solid fa-key"></i>
+                        <input type="password" name="loginPasswordInput" id="loginPasswordInput" placeholder="Senha" required autocomplete="current-password">
+                        <button id="loginVisiblePassword" class="visiblePassword" type="button"><i class="fa-regular fa-eye-slash"></i></button>
+                    </div>
+                    <a href="../forgotPassword" class="forgotPassword">Esqueceu a senha?</a>
+                    <div id="loginErrorTextContainer" class="errorContainer"></div>
+                    <button type="button" class="mainActionButton" id="loginButton">Login</button>
+                </form>
+                <a href="../signup">Cadastrar-se!</a>
+            </div>
+        </section>
+    </main>
+    <script src="login.js" type="module" defer></script>
+    <script src="variables.js" type="module" defer></script>
+</body>
