@@ -2,7 +2,7 @@
 import { loginContainer, loginForm, loginUsernameInput, loginPasswordInput,  loginVisiblePassword, loginButton, loginErrorTextContainer} from "./variables.js"
 
 //Variables
-const url = 'http://localhost:5000/api/v1/auth/login'
+const url = 'https://projeto-barbershop-api.onrender.com/api/v1/auth/login'
 
 //Funções
 const passwordVisibility = () => {

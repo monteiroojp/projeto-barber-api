@@ -2,7 +2,7 @@
 import {singUpContainer, signForm, signEmailInput, signUsernameInput, signPasswordInput, signButton, signVisiblePassword, passwordInputContainer, signErrorTextContainer} from './variables.js'
 
 //Variables
-const url = 'http://localhost:5000/api/v1/auth/signUp'
+const url = 'https://projeto-barbershop-api.onrender.com/api/v1/auth/signUp'
 
 //Funções
 const passwordVisibility = () => {

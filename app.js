@@ -29,17 +29,20 @@ app.use('/forgotPassword', express.static('./public/forgotPassword'))
 app.use('/myAppoiments', express.static('./public/myAppoiments'))
 app.use('/dashboard', express.static('./public/dashboard'))
 
-//Extra securites import
-const helmet = require('helmet')
-const cors = require('cors')
-const xss = require('xss-clean')
-const rateLimiter = require('express-rate-limit')
-
 //Routes
 app.use('/api/v1/auth', loginRoute)
 app.use('/api/v1/appoiments', authToken,appoimentRoute)
 app.use('/api/v1/barbers', authToken, barberRoute)
 app.use('/api/v1/services', serviceRoute)
+
+//Extra securites import
+const helmet = require('helmet')
+app.use(cors({
+    origin: process.env.CORS_ORIGIN,
+    optionsSuccessStatus: 200
+  }))
+const xss = require('xss-clean')
+const rateLimiter = require('express-rate-limit')
 
 //Middlewares import
 const errorHandler = require('./middlewares/errorHandler.js')
