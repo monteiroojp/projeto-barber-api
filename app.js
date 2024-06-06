@@ -37,10 +37,7 @@ app.use('/api/v1/services', serviceRoute)
 
 //Extra securites import
 const helmet = require('helmet')
-app.use(cors({
-    origin: process.env.CORS_ORIGIN,
-    optionsSuccessStatus: 200
-  }))
+const cors = require('cors')
 const xss = require('xss-clean')
 const rateLimiter = require('express-rate-limit')
 
@@ -55,7 +52,10 @@ app.use(notFound)
 //Security 
 app.set('trust proxy', 1)
 app.use(helmet())
-app.use(cors())
+app.use(cors({
+    origin: process.env.CORS_ORIGIN,
+    optionsSuccessStatus: 200
+  }))
 app.use(xss())
 app.use(rateLimiter({
   windowMs: 15 * 60 * 1000,
