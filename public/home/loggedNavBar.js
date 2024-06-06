@@ -1,5 +1,6 @@
 //Variáveis
 const navBar = document.getElementById('navBar')
+console.log('ITs happengiega')
 
 //Funções
 const isLogged = () => {
@@ -19,6 +20,7 @@ const isLogged = () => {
     }
 
     const decodedToken = jwt_decode(token);
+    console.log(decodedToken)
 
     if(decodedToken.isAdmin){
         conosle.log('adming')
