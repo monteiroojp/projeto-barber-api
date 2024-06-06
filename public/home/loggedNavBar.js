@@ -23,7 +23,7 @@ const isLogged = () => {
     console.log(decodedToken)
 
     if(decodedToken.isAdmin){
-        conosle.log('adming')
+        console.log('adming')
         navBar.innerHTML += `
         <li class="nav-item">
         <a class="nav-link" href="./dashboard">Dashboard</a>
