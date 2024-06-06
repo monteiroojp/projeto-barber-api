@@ -21,6 +21,7 @@ const isLogged = () => {
     const decodedToken = jwt_decode(token);
 
     if(decodedToken.isAdmin){
+        conosle.log('adming')
         navBar.innerHTML += `
         <li class="nav-item">
         <a class="nav-link" href="./dashboard">Dashboard</a>

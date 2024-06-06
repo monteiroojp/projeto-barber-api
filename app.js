@@ -19,7 +19,14 @@ const errorHandler = require('./middlewares/errorHandler.js')
 const notFound = require('./middlewares/notFound.js')
 
 // Security
-app.use(helmet())
+app.use(helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "https://cdn.jsdelivr.net"]
+      },
+    },
+  }));
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
     optionsSuccessStatus: 200
