@@ -9,7 +9,6 @@ const express = require('express')
 const app = express()
 
 // Extra security imports
-const helmet = require('helmet')
 const cors = require('cors')
 const xss = require('xss-clean')
 const rateLimiter = require('express-rate-limit')
@@ -19,14 +18,6 @@ const errorHandler = require('./middlewares/errorHandler.js')
 const notFound = require('./middlewares/notFound.js')
 
 // Security
-app.use(helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "https://cdn.jsdelivr.net"]
-      },
-    },
-  }));
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
     optionsSuccessStatus: 200
