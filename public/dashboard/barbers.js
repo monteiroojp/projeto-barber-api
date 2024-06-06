@@ -9,7 +9,7 @@ let currentEditBarberId = '';
 // Funções
 const fetchBarbers = async () => {
     try {
-        const response = await fetch('http://localhost:5000/api/v1/barbers', {
+        const response = await fetch('https://projeto-barbershop-api.onrender.com/api/v1/barbers', {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
             }
@@ -52,7 +52,7 @@ const addBarber = async (event) => {
     };
 
     try {
-        const response = await fetch('http://localhost:5000/api/v1/barbers', {
+        const response = await fetch('https://projeto-barbershop-api.onrender.com/api/v1/barbers', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ const editBarber = async (event) => {
     };
 
     try {
-        await fetch(`http://localhost:5000/api/v1/barbers/${currentEditBarberId}`, {
+        await fetch(`https://projeto-barbershop-api.onrender.com/api/v1/barbers/${currentEditBarberId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ const confirmDeleteBarber = (id) => {
 
 const deleteBarber = async (id) => {
     try {
-        await fetch(`http://localhost:5000/api/v1/barbers/${id}`, {
+        await fetch(`https://projeto-barbershop-api.onrender.com/api/v1/barbers/${id}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`

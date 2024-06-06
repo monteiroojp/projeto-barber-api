@@ -8,7 +8,7 @@ const sortSelect = document.getElementById('sortSelect')
 
 //Funções
 export const fetchAppoiments = async (queryParameters) => {
-    const response = await fetch(`http://localhost:5000/api/v1/appoiments?${queryParameters}`, {
+    const response = await fetch(`https://projeto-barbershop-api.onrender.com/api/v1/appoiments?${queryParameters}`, {
         headers: {
             'Authorization' : `Bearer ${localStorage.getItem('jwtToken')}`
         }
@@ -19,12 +19,12 @@ export const fetchAppoiments = async (queryParameters) => {
 
     for (const appoiment of allAppoiments) {
         try {
-            const serviceResponse = await fetch(`http://localhost:5000/api/v1/services/${appoiment.services}`, {
+            const serviceResponse = await fetch(`https://projeto-barbershop-api.onrender.com/api/v1/services/${appoiment.services}`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
                 }
             });
-            const barberResponse = await fetch(`http://localhost:5000/api/v1/barbers/${appoiment.choosenBarber}`, {
+            const barberResponse = await fetch(`https://projeto-barbershop-api.onrender.com/api/v1/barbers/${appoiment.choosenBarber}`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
                 }
@@ -58,7 +58,7 @@ const renderAppointments = async (allAppoiments) => {
 }
 
 const fetchBarbersForQuery = async () => {
-    const response = await fetch('http://localhost:5000/api/v1/barbers', {
+    const response = await fetch('https://projeto-barbershop-api.onrender.com/api/v1/barbers', {
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
         }
@@ -78,7 +78,7 @@ const renderBarbersOptions =  (allBarbers) => {
 }
 
 const fetchServicesForQuery = async () => {
-    const response = await fetch('http://localhost:5000/api/v1/services', {
+    const response = await fetch('https://projeto-barbershop-api.onrender.com/api/v1/services', {
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
         }

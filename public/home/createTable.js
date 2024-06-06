@@ -1,5 +1,5 @@
 const servicesBody = document.getElementById('servicesBody')
-const servicesURL = "http://localhost:5000/api/v1/services"
+const servicesURL = "https://projeto-barbershop-api.onrender.com/api/v1/services"
 
 const fetchData = async () => {
     try {

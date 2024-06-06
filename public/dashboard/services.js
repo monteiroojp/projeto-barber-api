@@ -8,7 +8,7 @@ let currentEditServiceId = '';
 // Funções
 const fetchServices = async () => {
     try {
-        const response = await fetch('http://localhost:5000/api/v1/services', {
+        const response = await fetch('https://projeto-barbershop-api.onrender.com/api/v1/services', {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
             }
@@ -51,7 +51,7 @@ const addService = async (event) => {
     };
 
     try {
-        const response = await fetch('http://localhost:5000/api/v1/services', {
+        const response = await fetch('https://projeto-barbershop-api.onrender.com/api/v1/services', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ const editService = async (event) => {
     };
 
     try {
-        await fetch(`http://localhost:5000/api/v1/services/${currentEditServiceId}`, {
+        await fetch(`https://projeto-barbershop-api.onrender.com/api/v1/services/${currentEditServiceId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ const confirmDeleteService = (id) => {
 
 const deleteService = async (id) => {
     try {
-        await fetch(`http://localhost:5000/api/v1/services/${id}`, {
+        await fetch(`https://projeto-barbershop-api.onrender.com/api/v1/services/${id}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`

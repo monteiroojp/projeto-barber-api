@@ -2,7 +2,7 @@
 import {forgotPasswordContainer, forgotPasswordForm, forgotPasswordUsernameInput, forgotPasswordPasswordInput, forgotPasswordButton, forgotPasswordVisiblePassword, forgotPasswordErrorContainer} from "./variables.js"
 
 //Variáveis
-const url = 'http://localhost:5000/api/v1/auth/forgotPassword'
+const url = 'https://projeto-barbershop-api.onrender.com/api/v1/auth/forgotPassword'
 
 //Funções
 const passwordVisibility = () => {

@@ -1,5 +1,5 @@
 // Variáveis
-const url = 'http://localhost:5000/api/v1/appoiments?createdBy=true';
+const url = 'https://projeto-barbershop-api.onrender.com/api/v1/appoiments?createdBy=true';
 const appointmentsContainer = document.getElementById('appointmentsContainer');
 
 // Funções
@@ -15,12 +15,12 @@ const fetchCards = async () => {
 
         for (const appoiment of allAppoiments) {
             try {
-                const serviceResponse = await fetch(`http://localhost:5000/api/v1/services/${appoiment.services}`, {
+                const serviceResponse = await fetch(`https://projeto-barbershop-api.onrender.com/api/v1/services/${appoiment.services}`, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
                     }
                 });
-                const barberResponse = await fetch(`http://localhost:5000/api/v1/barbers/${appoiment.choosenBarber}`, {
+                const barberResponse = await fetch(`https://projeto-barbershop-api.onrender.com/api/v1/barbers/${appoiment.choosenBarber}`, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
                     }
@@ -81,7 +81,7 @@ const addCancelListeners = () => {
 
 const cancelAppointment = async (appointmentId) => {
     try {
-        const response = await fetch(`http://localhost:5000/api/v1/appoiments/${appointmentId}`, {
+        const response = await fetch(`https://projeto-barbershop-api.onrender.com/api/v1/appoiments/${appointmentId}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`

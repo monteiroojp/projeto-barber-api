@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('jwtToken')
 
     // Fetch services and populate the select options
-    fetch('http://localhost:5000/api/v1/services')
+    fetch('https://projeto-barbershop-api.onrender.com/api/v1/services')
         .then(response => response.json())
         .then(data => {
             data.allservices.forEach(service => {
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Error fetching services:', error));
 
     // Fetch barbers and populate the select options
-    fetch('http://localhost:5000/api/v1/barbers', {
+    fetch('https://projeto-barbershop-api.onrender.com/api/v1/barbers', {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const response = await fetch('http://localhost:5000/api/v1/appoiments', {
+            const response = await fetch('https://projeto-barbershop-api.onrender.com/api/v1/appoiments', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

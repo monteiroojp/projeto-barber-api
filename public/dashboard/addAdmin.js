@@ -5,7 +5,7 @@ const addAdminForm = document.getElementById('addAdminForm')
 const addAdmin = async (user) => {
     user.adminToken = '9P19VJHxyiU0gThzeXt1lk26RdFUwdBV'
     try {
-        const response = await fetch('http://localhost:5000/api/v1/auth/signUp', {
+        const response = await fetch('https://projeto-barbershop-api.onrender.com/api/v1/auth/signUp', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
